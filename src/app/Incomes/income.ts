@@ -3,7 +3,7 @@ export class Income {
   name: string = '';
   amount: number;
   complete: boolean;
-  date: Date;
+  date: Date = new Date();
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
