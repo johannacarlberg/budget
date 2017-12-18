@@ -5,7 +5,8 @@ import { IncomeDataService } from "./income-data.service";
 @Component({
   selector: 'app-income',
   templateUrl: './income.component.html',
-  providers: [IncomeDataService]
+  providers: [IncomeDataService],
+  styleUrls: ['../app.component.css'],
 })
 
 export class IncomeComponent {
