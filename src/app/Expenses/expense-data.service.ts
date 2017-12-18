@@ -19,7 +19,6 @@ export class ExpenseDataService {
     if (!expense.id) {
       expense.id = ++this.lastId;
     }
-    expense.date = new Date();
     this.expenses.push(expense);
     return this;
   }
