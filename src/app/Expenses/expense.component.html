@@ -1,0 +1,40 @@
+<h2>Expenses</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <select [(ngModel)]="newExpense.category">
+        <option *ngFor=" let category of categories" [value]= category>{{category}}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <input class="form-control" placeholder="What did you spend it on?" autofocus="" [(ngModel)]="newExpense.name" type="text">
+    </div>
+    <div class="col-3">
+      <input class="form-control" placeholder="How much?" autofocus="" [(ngModel)]="newExpense.amount" type="number">
+    </div>
+    <div class="col-3">
+      <button (click)="addExpense()" class="btn btn-default">Submit </button>
+    </div>
+  </div>
+</div>
+
+<br>
+<br>
+<section class="main" *ngIf="expenses.length > 0">
+  <ul class="list-group">
+    <li class="list-group-item active">Expenses</li>
+    <li class="list-group-item" *ngFor="let expense of expenses">
+      <!--{{ expense.category }}:-->
+      {{ expense.name }}
+      <span class="pull-right">£{{ expense.amount | number : '1.2-2'}} </span>
+      <!--<button class="btn btn-danger" (click)="removeExpense(expense)">Delete</button>-->
+    </li>
+    <li class="list-group-item align-right bold" *ngIf="expensesSum > 0"> £{{expensesSum | number : '1.2-2'}}</li>
+  </ul>
+</section>
+
+
+<footer class="footer" *ngIf="expenses.length > 0">
+  <span class="expense-count"><strong>{{expenses.length}}</strong> {{expenses.length == 1 ? 'item' : 'items'}} </span>
+</footer>
+

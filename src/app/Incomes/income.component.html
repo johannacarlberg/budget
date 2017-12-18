@@ -1,0 +1,29 @@
+<h2>Incomes</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <select [(ngModel)]="newIncome.name">
+        <option *ngFor=" let category of categories" [value]= category>{{category}}</option>
+      </select>
+    </div>
+    <div class="col-4">
+      <input class="form-control" placeholder="How much?" autofocus="" [(ngModel)]="newIncome.amount" type="number">
+    </div>
+    <div class="col-4">
+      <button (click)="addIncome()" class="btn btn-default">Submit </button>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<section class="main" *ngIf="incomes.length > 0">
+  <ul class="list-group">
+    <li class="list-group-item active">Incomes</li>
+    <li class="list-group-item" *ngFor="let income of incomes"> {{ income.name }}: £{{ income.amount | number : '1.2-2'}}  <button class="destroy" (click)="removeIncome(income)">Delete</button></li>
+  </ul>
+</section>
+
+<footer class="footer" *ngIf="incomes.length > 0">
+  <span class="income-count"><strong>{{incomes.length}}</strong> {{incomes.length == 1 ? 'item' : 'items'}} </span>
+</footer>
